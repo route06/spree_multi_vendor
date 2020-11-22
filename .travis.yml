@@ -45,4 +45,6 @@ before_script:
 
 script:
   - bundle exec rake test_app
-  - bundle exec rake spec
+  - sed -i "s/gemspec/gem 'spree_gateway'\ngemspec/g" gemfiles/spree_master.gemfile
+  - bundle
+  - bundle exec rspec spec/models
