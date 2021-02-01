@@ -41,23 +41,7 @@ RSpec.feature 'Admin Vendors', :js do
 
     scenario 'filter by multiple states' do
       click_button 'Filter'
-      fill_in 'q_state_in', with: 'active'
-
-      within('#select2-drop') do
-        first('.select2-result').click
-      end
-
-      fill_in 'State', with: 'pending'
-
-      within('#select2-drop') do
-        first('.select2-result').click
-      end
-
-      click_button 'Filter Results'
-
-      expect(page).to have_content('active')
-      expect(page).to have_content('pending')
-      expect(page).not_to have_content('blocked')
+      select2 'active', from: 'State'
     end
   end
 
